@@ -6,3 +6,4 @@ For my project, I am creating an app where personal trainers can post workout ro
 </pre>
 
 **<h1>ERD Screenshot:</h1>**
+![UIProjectERD](https://user-images.githubusercontent.com/102160505/172288205-5cee41c0-47e7-4876-a976-2afc8f1ff5dc.PNG)
