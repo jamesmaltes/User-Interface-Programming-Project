@@ -1,0 +1,15 @@
+{
+  "name": "uip-project",
+  "version": "1.0.0",
+  "description": "User Interface Design Project Idea:",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "James Maltes",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
