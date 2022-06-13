@@ -13,7 +13,7 @@ router
     }
   })
 
-  .workout('/createWorkout', async (req, res) => {
+  .post('/createWorkout', async (req, res) => {
     try {
       const workout = await Workout.createWorkout(req.body.workout);
       res.send({...workout, workout: undefined});
@@ -21,9 +21,9 @@ router
       res.status(401).send({ message: error.message }); 
     }
   })
-  .delete('/dWorkouts', async (req, res) => {
+  .delete('/deleteWorkouts', async (req, res) => {
     try {
-      await Workout.dWorkouts(req.body.workout);
+      await Workout.deleteWorkouts(req.body.workout);
       res.send({ success: "Workouts deleted" });
     } catch(error) {
       res.status(401).send({ message: error.message });

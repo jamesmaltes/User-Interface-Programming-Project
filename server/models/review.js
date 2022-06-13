@@ -21,7 +21,7 @@ async function createReview( review) {
    return review;
 }
 
-  async function dReviews(review) {
+  async function deleteReviews(review) {
     return await Review.deleteMany({"review": review});
 }
 
@@ -31,5 +31,5 @@ async function createReview( review) {
 }
 
   module.exports = { 
-    createReview, showReviews, dReviews, updateReview
+    createReview, showReviews, deleteReviews, updateReview
 };

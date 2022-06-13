@@ -21,7 +21,7 @@ async function createWorkout( workout) {
    return workout;
 }
 
-  async function dWorkouts(workout) {
+  async function deleteWorkouts(workout) {
     return await Workout.deleteMany({"workout": workout});
 }
 
@@ -31,5 +31,5 @@ async function createWorkout( workout) {
 }
 
   module.exports = { 
-    createWorkout, showWorkouts, dWorkouts, updateWorkout
+    createWorkout, showWorkouts, deleteWorkouts, updateWorkout
 };

@@ -13,7 +13,7 @@ router
     }
   })
 
-  .review('/createReview', async (req, res) => {
+  .post('/createReview', async (req, res) => {
     try {
       const review = await Review.createReview(req.body.review);
       res.send({...review, review: undefined});
@@ -21,9 +21,9 @@ router
       res.status(401).send({ message: error.message }); 
     }
   })
-  .delete('/dReviews', async (req, res) => {
+  .delete('/deleteReviews', async (req, res) => {
     try {
-      await Review.dReviews(req.body.review);
+      await Review.deleteReviews(req.body.review);
       res.send({ success: "Reviews deleted" });
     } catch(error) {
       res.status(401).send({ message: error.message });
