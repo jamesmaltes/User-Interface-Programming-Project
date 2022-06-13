@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
-//const trainerid = require('./trainer')
 
 const workoutSchema = new mongoose.Schema({
-
- // id: { type: mongoose.Schema.Types.ObjectId, ref: "Trainer"},
   workout:  {type:String }
 })
 

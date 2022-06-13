@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
-//const athleteid = require('./athlete')
 
 const reviewSchema = new mongoose.Schema({
-
- // id: { type: mongoose.Schema.Types.ObjectId, ref: "Athlete"},
   review:  {type:String }
 })
 
