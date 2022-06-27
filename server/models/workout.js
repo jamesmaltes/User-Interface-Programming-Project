@@ -6,7 +6,7 @@ const workoutSchema = new mongoose.Schema({
 
 const Workout = mongoose.model("Workout", workoutSchema);
 
-async function createWorkout( workout) {
+async function createWorkout(workout) {
     const newWorkout = await Workout.create({
      workout: workout
     });

@@ -1,5 +1,6 @@
 // 1. import mongoose
 const mongoose = require("mongoose");
+const bcrypt = require('bcrypt.js');
 
 // 2. create schema for entity
 const athleteSchema = new mongoose.Schema({
@@ -18,9 +19,12 @@ async function register(athletename, password) {
   const athlete = await getAthlete(athletename);
   if(athlete) throw Error('Athletename already in use');
 
+  const salt = await bcrypt.genSalt(10);
+  const hashed = await bcrypt.hash(password, salt);
+
   const newAthlete = await Athlete.create({
     athletename: athletename,
-    password: password
+    password: hashed
   });
 
   return newAthlete;
