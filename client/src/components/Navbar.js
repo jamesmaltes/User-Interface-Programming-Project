@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, Link } from "react-router-dom";
 
-function Navbar() {
+const Navbar = () => {
     return (
     <div>
       <nav className="navbar navbar-expand-lg bg-light">
