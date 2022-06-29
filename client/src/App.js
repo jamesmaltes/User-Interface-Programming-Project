@@ -1,25 +1,16 @@
 // import your own logo instead
-import logo from './logo.svg';
 
 import './App.css';
+import Workouts from './components/Workouts.js';
+import Navbar from './components/Navbar.js';
+import Register from './components/Register.js';
+import Profile from './components/Profile.js'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Next Level Fitness</h1>
+      <Workouts />
     </div>
   );
 }
