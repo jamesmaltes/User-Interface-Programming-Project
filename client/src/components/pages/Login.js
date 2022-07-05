@@ -1,5 +1,5 @@
-import { fetchData} from "../../main.js";
-import { useState} from "react";
+import { fetchData } from "../../main.js";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
@@ -20,7 +20,7 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    fetchData("/user/login", 
+    fetchData("/trainer/login", 
       {
        username,
        password

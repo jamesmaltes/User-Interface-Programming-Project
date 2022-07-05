@@ -33,10 +33,12 @@ function App() {
 
       <BrowserRouter>
       <Routes>
-      <Route path='/' element={<Navbar />}>
+          <Route path='/' element={<Navbar />}>
           <Route index element={<About />}/>
           <Route path="workouts" element={<Workouts workout={workouts}/>}/>
           <Route path="register" element={<Register />}/>
+          <Route path="login" element={<Login />}/>
+          <Route path="profile" element={<Profile />}/>
 
         </Route>
       </Routes>
