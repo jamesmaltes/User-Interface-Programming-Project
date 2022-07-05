@@ -77,7 +77,7 @@ const Profile = () => {
                 <form className="profileForm" onSubmit={onSubmit}>
                     <h1>Welcome</h1>
                 <div className="mx-4 my-4">
-                   <label htmlFor="post" className="form-label">Create a new workout:</label>
+                   <label htmlFor="workout" className="form-label">Create a new workout:</label>
                    <input 
                       type="text" 
                       className="form-control" 
