@@ -1,21 +1,19 @@
 import { fetchData } from "../../main.js";
-import { useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../../context/userContext.js"
 
 
 const Login = () => {
   
   const navigate = useNavigate();
 
-  const [user, setUser] = useState({
-    username: '',
-    password: '',
-  });
+  const { user, updateUser } = useContext(UserContext);
 
   const {username, password} = user;  
 
   //functions
-  const onChange = (e) => setUser({...user, [e.target.name]: e.target.value})
+  const onChange = (e) => updateUser({...user, [e.target.name]: e.target.value})
 
   const onSubmit = (e) => {
     e.preventDefault();

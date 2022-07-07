@@ -1,25 +1,11 @@
-const trainer =
-    {
-        trainerid: 1,
-        trainername: "James"
-    }
+import { useContext } from "react";
+import UserContext from "../../context/userContext";
 
-const workouts = [
-    {
-        id: 1,
-        title: "Workout week 1"
-    },
-
-    {
-        id: 2,
-        title: "Workout week 2"
-    }
-]
-
-function Workouts() {
+const Workouts = (props) => {
+    const { user } = useContext(UserContext); // gives username of current user
     return (
         <div>
-            <h2>{trainer.trainername}'s Listed Workouts:</h2>
+            <h2>{user.username}'s Listed Workouts:</h2>
             <ul>
                 { workouts.map((workout) =>
                 <li key={workout.id}> {workout.title} </li>

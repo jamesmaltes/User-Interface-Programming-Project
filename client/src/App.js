@@ -2,6 +2,7 @@
 
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { UserProvider } from './context/userContext';
 import About from './components/pages/About.js'
 import Workouts from './components/pages/Workouts.js';
 import Navbar from './components/pages/Navbar.js';
@@ -30,7 +31,7 @@ function App() {
   return (
     <div className="App">
       <h1>Next Level Fitness</h1>
-
+      <UserProvider>
       <BrowserRouter>
       <Routes>
           <Route path='/' element={<Navbar />}>
@@ -43,7 +44,8 @@ function App() {
         </Route>
       </Routes>
       </BrowserRouter>
-
+      </UserProvider>
+      
     </div>
   );
 }
