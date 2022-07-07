@@ -1,8 +1,10 @@
-import React, { Fragment, useContext } from 'react';
 import { Outlet, Link } from "react-router-dom";
+import UserContext from "../../context/userContext";
+import { useContext, Fragment } from "react";
 
 const Navbar = () => {
-  const { user } = useContext(userContext);
+
+  const { user } = useContext(UserContext);
 
   const authenticated = (
     <Fragment>
