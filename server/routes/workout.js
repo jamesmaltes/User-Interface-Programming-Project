@@ -4,16 +4,16 @@ const router = express.Router();
 
 router
 
-.get('/showWorkouts', async (req, res) => {
+.get('/show', async (req, res) => {
     try {
-      const workout = await Workout.showWorkouts(req.body.workout);
+      const workout = await Workout.getWorkouts(req.body.workout);
       res.send(workout);
     } catch(err) {
       res.status(401).send({message: err.message});
     }
   })
 
-  .post('/createWorkout', async (req, res) => {
+  .post('/create', async (req, res) => {
     try {
       const workout = await Workout.createWorkout(req.body.workout);
       res.send({...workout, workout: undefined});
@@ -21,7 +21,8 @@ router
       res.status(401).send({ message: error.message }); 
     }
   })
-  .delete('/deleteWorkouts', async (req, res) => {
+
+  .delete('/delete', async (req, res) => {
     try {
       await Workout.deleteWorkouts(req.body.workout);
       res.send({ success: "Workouts deleted" });
@@ -30,7 +31,7 @@ router
     }
   })
 
-  .put('/updateWorkout', async (req, res) => {
+  .put('/update', async (req, res) => {
     try {
       const workout = await Workout.updateWorkout(req.body.id, req.body.workout);
       res.send({...workout, workout: undefined});

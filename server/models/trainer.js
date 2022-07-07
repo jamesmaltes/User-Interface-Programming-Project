@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt.js');
 
 // 2. create schema for entity
 const trainerSchema = new mongoose.Schema({
-  trainername: { type: String, unique: true, required: true},
+  username: { type: String, unique: true, required: true},
   password: { type: String, required: true},
   followers: [String],
   following: [String]
@@ -15,15 +15,15 @@ const Trainer = mongoose.model("Trainer", trainerSchema);
 
 // 4. create CRUD functions on model
 //CREATE a trainer
-async function register(trainername, password) {
-  const trainer = await getTrainer(trainername);
+async function register(username, password) {
+  const trainer = await getTrainer(username);
   if(trainer) throw Error('Trainername already in use');
 
   const salt = await bcrypt.genSalt(10);
   const hashed = await bcrypt.hash(password, salt);
 
   const newTrainer = await Trainer.create({
-    trainername: trainername,
+    username: username,
     password: hashed
   });
 
@@ -31,15 +31,15 @@ async function register(trainername, password) {
 }
 
 // READ a trainer
-async function login(trainername, password) {
-  const trainer = await getTrainer(trainername);
+async function login(username, password) {
+  const trainer = await getTrainer(username);
   if(!trainer) throw Error('Trainer not found');
 
   const isMatch = await bcrypt.compare(password, trainer.password);
 
   if(!isMatch) throw Error('Wrong Password');
 
-  return trainer;
+  return trainer._doc;
 }
 
 // UPDATE
@@ -54,8 +54,8 @@ async function deleteTrainer(id) {
 };
 
 // utility functions
-async function getTrainer(trainername) {
-  return await Trainer.findOne({ "trainername": trainername});
+async function getTrainer(username) {
+  return await Trainer.findOne({ "username": username});
 }
 
 // 5. export all functions we want to access in route files

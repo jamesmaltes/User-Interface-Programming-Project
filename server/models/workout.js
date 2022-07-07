@@ -13,7 +13,7 @@ async function createWorkout(workout) {
     return newWorkout;
 }
 
-  async function showWorkouts() {
+  async function getWorkouts() {
     const workout = await Workout.find();
    return workout;
 }
@@ -24,9 +24,9 @@ async function createWorkout(workout) {
 
  async function updateWorkout(id, workout) {
   const trainer = await Workout.updateOne({"_id": id}, {$set: { workout: workout}});
-  return trainer;
+  return workout;
 }
 
   module.exports = { 
-    createWorkout, showWorkouts, deleteWorkouts, updateWorkout
+    createWorkout, getWorkouts, deleteWorkouts, updateWorkout
 };
