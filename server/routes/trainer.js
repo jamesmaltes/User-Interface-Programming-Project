@@ -7,7 +7,7 @@ const router = express.Router();
 router
   .post('/login', async (req, res) => {
     try {
-      const trainer = await Trainer.login(req.body.trainername, req.body.password);
+      const trainer = await Trainer.login(req.body.username, req.body.password);
       res.send({...trainer, password: undefined});
     } catch(error) {
       res.status(401).send({ message: error.message });
@@ -16,7 +16,7 @@ router
 
   .post('/register', async (req, res) => {
     try {
-      const trainer = await Trainer.register(req.body.trainername, req.body.password);
+      const trainer = await Trainer.register(req.body.username, req.body.password);
       res.send({...trainer, password: undefined});
     } catch(error) {
       res.status(401).send({ message: error.message }); 

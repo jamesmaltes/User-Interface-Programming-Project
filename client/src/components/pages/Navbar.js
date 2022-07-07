@@ -1,6 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
-import UserContext from "../../context/userContext";
 import { useContext, Fragment } from "react";
+import UserContext from "../../context/userContext";
 
 const Navbar = () => {
 
@@ -17,7 +17,7 @@ const Navbar = () => {
     const guest = (
       <Fragment>
         <h2>
-          Welcome.
+          Welcome guest.
         </h2>
       </Fragment>
     )

@@ -12,10 +12,11 @@ const Register = () => {
   const {username, password, password2} = user;  
 
   //functions
-  const onChange = (e) => updateUser({...user, [e.target.name]: e.target.value})
+  const onChange = (e) => updateUser(e.target.name, e.target.value)
 
   const onSubmit = (e) => {
     e.preventDefault();
+
     fetchData("/trainer/register", 
       {
        username,
@@ -25,7 +26,7 @@ const Register = () => {
     .then((data) => {
       if(!data.message) {
         updateUser("authenticated", true)
-        navigate("/workouts")
+        navigate("/profile")
       }
     })  
     .catch((error) => {

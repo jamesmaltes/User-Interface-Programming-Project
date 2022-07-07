@@ -7,7 +7,7 @@ const Profile = () => {
   
   const navigate = useNavigate();
   const { state } = useLocation();
-  const trainerId = state._id;
+ // const trainerId = Trainer._id;
 
   const [workout, setWorkout] = useState({
     content: ''
@@ -16,7 +16,7 @@ const Profile = () => {
   const { content } = workout;
 
   //functions
-  const onChange = (e) => setWorkout({...workout, [e.target.name]: e.target.value})
+  const onChange = (e) => setWorkout(e.target.name, e.target.value)
 
   //creating new workout
   const CreateNewWorkout = () => {
@@ -30,9 +30,8 @@ const Profile = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    fetchData("/workout/createWorkout", 
+    fetchData("/workout/create", 
       {
-       trainerId,
        workout
       }, 
       "POST")
@@ -51,9 +50,9 @@ const Profile = () => {
   // obtaining all workouts posted
   window.onload = function getallWorkouts() {
 
-    fetchData('/workout/getWorkouts',
+    fetchData('/workout/show',
     {
-        trainerId
+        workout
     },
 
     "GET")
@@ -70,34 +69,27 @@ const Profile = () => {
 
     //bootstrap and setup
     return (
-        <div className="profile">
-            <h1>Your profile:</h1>
-            <hr/>
-            <div className="container">
-                <form className="profileForm" onSubmit={onSubmit}>
-                    <h1>Welcome</h1>
-                <div className="mx-4 my-4">
-                   <label htmlFor="workout" className="form-label">Create a new workout:</label>
-                   <input 
-                      type="text" 
-                      className="form-control" 
-                      id="content"
-                      name="content" 
-                      onChange={onChange}
-                      value={content}
-                      required
-                    />
-                 </div>
-                 <button type="submit" className="btn my-4">Post</button>
-                </form>
-            </div>
-            <div className="postedWorkouts" id="postedWorkouts">
-
-            </div>
-            <div className="workouts" id="workouts">
-            </div>
+      <div>
+      <form onSubmit={onSubmit}>
+        <div className="mb-3">
+          <label htmlFor="workouttext" className="form-label">Write a workout:</label>
+          <input 
+            type="text" 
+            className="form-control" 
+            id="workout-text"
+            name='workout-text'
+            onChange={onChange}
+            value={content}
+            required
+          />
+        </div>
+        <input type="submit" className="btn btn-primary" value="Post a new workout"/>
+        <div className="postedWorkouts">
 
         </div>
+      </form>
+    </div>
+    
     );
 }
 

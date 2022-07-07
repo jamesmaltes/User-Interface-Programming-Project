@@ -13,7 +13,7 @@ const Login = () => {
   const {username, password} = user;  
 
   //functions
-  const onChange = (e) => updateUser({...user, [e.target.name]: e.target.value})
+  const onChange = (e) => updateUser(e.target.name, e.target.value)
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -26,8 +26,9 @@ const Login = () => {
       "POST")
     .then((data) => {
       if(!data.message) {
-        console.log(data)
-        navigate("/workouts")
+        console.log(data);
+        updateUser("authenticated", true);
+        navigate("/profile");
       }
     })  
     .catch((error) => {
@@ -47,7 +48,7 @@ const Login = () => {
             type="text" 
             className="form-control" 
             id="username"
-            name='username'
+            name="username"
             onChange={onChange}
             value={username}
             required
@@ -59,7 +60,7 @@ const Login = () => {
             type="password" 
             className="form-control" 
             id="password"
-            name='password'
+            name="password"
             onChange={onChange}
             value={password}
             required
