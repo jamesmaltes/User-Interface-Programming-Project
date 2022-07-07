@@ -6,11 +6,11 @@ const path = require('path');
 
 //users
 const trainerRoutes = require('./server/routes/trainer');
-const athleteRoutes = require('./server/routes/athlete');
+//const athleteRoutes = require('./server/routes/athlete');
 
 //posts
 const workoutRoutes = require('./server/routes/workout');
-const reviewRoutes = require('./server/routes/review');
+//const reviewRoutes = require('./server/routes/review');
 
 //enabling use of mongoose DB
 mongoose.connect(process.env.dbURL)
@@ -31,10 +31,10 @@ app.use(function(req, res, next) {
 
 //using routes
 app.use('/trainer', trainerRoutes);
-app.use('/athlete', athleteRoutes);
+//app.use('/athlete', athleteRoutes);
 app.use('/workout', workoutRoutes);
-app.use('/review', reviewRoutes);
+//app.use('/review', reviewRoutes);
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}!`));

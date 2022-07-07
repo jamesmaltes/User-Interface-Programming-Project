@@ -1,6 +1,6 @@
 // 1. import mongoose
 const mongoose = require("mongoose");
-const bcrypt = require('bcrypt.js');
+//const bcrypt = require('bcrypt.js');
 
 // 2. create schema for entity
 const trainerSchema = new mongoose.Schema({
