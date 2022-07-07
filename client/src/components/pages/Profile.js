@@ -1,13 +1,13 @@
 import { fetchData} from "../../main.js";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-
+import UserContext from "../../context/userContext.js";
 
 const Profile = () => {
   
   const navigate = useNavigate();
   const { state } = useLocation();
- // const trainerId = Trainer._id;
+  const { user } = useContext(UserContext);
 
   const [workout, setWorkout] = useState({
     content: ''
@@ -72,6 +72,9 @@ const Profile = () => {
       <div>
       <form onSubmit={onSubmit}>
         <div className="mb-3">
+          <h2>
+            Welcome to your profile { user.username }.
+          </h2>
           <label htmlFor="workouttext" className="form-label">Write a workout:</label>
           <input 
             type="text" 
