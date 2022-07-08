@@ -1,17 +1,15 @@
 import { fetchData } from "../../main.js";
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import UserContext from "../../context/userContext.js"
+import { useContext } from "react";
+import UserContext from "../../context/userContext.js";
 
 const Register = () => {
-
   const navigate = useNavigate();
 
-  const { user, updateUser } = useContext(UserContext);
+  const {user, updateUser} = useContext(UserContext);
 
   const {username, password, password2} = user;  
 
-  //functions
   const onChange = (e) => updateUser(e.target.name, e.target.value)
 
   const onSubmit = (e) => {
@@ -35,7 +33,6 @@ const Register = () => {
 
   }
 
-  //bootstrap and setup
   return(
     <div>
       <form onSubmit={onSubmit}>
@@ -64,7 +61,7 @@ const Register = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="password2" className="form-label">Confirm Password:</label>
+          <label htmlFor="password2" className="form-label">Confirm Password</label>
           <input 
             type="password" 
             className="form-control" 

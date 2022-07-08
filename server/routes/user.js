@@ -1,14 +1,14 @@
 // 1. import any needed libraries
 const express = require("express");
-const Trainer = require('../models/trainer'); //accesses functions in trainer model file
+const User = require('../models/user'); //accesses functions in user model file
 const router = express.Router();
 
 // 2. create all routes to access database
 router
   .post('/login', async (req, res) => {
     try {
-      const trainer = await Trainer.login(req.body.username, req.body.password);
-      res.send({...trainer, password: undefined});
+      const user = await User.login(req.body.username, req.body.password);
+      res.send({...user, password: undefined});
     } catch(error) {
       res.status(401).send({ message: error.message });
     }
@@ -16,8 +16,8 @@ router
 
   .post('/register', async (req, res) => {
     try {
-      const trainer = await Trainer.register(req.body.username, req.body.password);
-      res.send({...trainer, password: undefined});
+      const user = await User.register(req.body.username, req.body.password);
+      res.send({...user, password: undefined});
     } catch(error) {
       res.status(401).send({ message: error.message }); 
     }
@@ -25,8 +25,8 @@ router
 
   .put('/update', async (req, res) => {
     try {
-      const trainer = await Trainer.updatePassword(req.body.id, req.body.password);
-      res.send({...trainer, password: undefined});
+      const user = await User.updatePassword(req.body.id, req.body.password);
+      res.send({...user, password: undefined});
     } catch(error) {
       res.status(401).send({ message: error.message });
     }
@@ -34,7 +34,7 @@ router
 
   .delete('/delete', async (req, res) => {
     try {
-      await Trainer.deleteTrainer(req.body.id);
+      await User.deleteUser(req.body.id);
       res.send({ success: "Account deleted" });
     } catch(error) {
       res.status(401).send({ message: error.message });

@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const path = require('path');
 
 //users
-const trainerRoutes = require('./server/routes/trainer');
+const userRoutes = require('./server/routes/user');
 //const athleteRoutes = require('./server/routes/athlete');
 
 //posts
@@ -31,7 +31,7 @@ app.use(function(req, res, next) {
 });
 
 //using routes
-app.use('/trainer', trainerRoutes);
+app.use('/user', userRoutes);
 //app.use('/athlete', athleteRoutes);
 app.use('/workout', workoutRoutes);
 //app.use('/review', reviewRoutes);
