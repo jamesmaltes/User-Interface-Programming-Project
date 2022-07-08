@@ -1,12 +1,10 @@
 import { fetchData} from "../../main.js";
-import { useContext, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import UserContext from "../../context/userContext.js";
+import Workouts from "./Workouts";
 
 const Profile = () => {
   
-  const navigate = useNavigate();
-  const { state } = useLocation();
   const { user } = useContext(UserContext);
 
   const [workout, setWorkout] = useState({
@@ -16,7 +14,13 @@ const Profile = () => {
   const { content } = workout;
 
   //functions
-  const onChange = (e) => setWorkout(e.target.name, e.target.value)
+
+  // to display posts
+  useEffect(() => {
+  
+  }, []);
+
+  const onChange = (e) => setWorkout({...workout, [e.target.name]: e.target.value})
 
   //creating new workout
   const CreateNewWorkout = () => {
@@ -47,33 +51,13 @@ const Profile = () => {
 
   }
 
-  // obtaining all workouts posted
-  window.onload = function getallWorkouts() {
-
-    fetchData('/workout/show',
-    {
-        workout
-    },
-
-    "GET")
-    .then((data) => {
-        if(!data.message) {
-            console.log(data)
-        }
-    })
-    .catch((error) => {
-        console.log(`Error! ${error.message}`)
-    })
-}
-
-
     //bootstrap and setup
     return (
       <div>
       <form onSubmit={onSubmit}>
         <div className="mb-3">
           <h2>
-            Welcome to your profile { user.username }.
+            Welcome to your profile, { user.username }.
           </h2>
           <label htmlFor="workouttext" className="form-label">Write a workout:</label>
           <input 
@@ -91,7 +75,12 @@ const Profile = () => {
 
         </div>
       </form>
+      <div>
+        <Workouts>
+        </Workouts>
+      </div>
     </div>
+    
     
     );
 }

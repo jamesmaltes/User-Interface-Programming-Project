@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const workoutSchema = new mongoose.Schema({
-  workout:  {type:String }
+  workout:  { type:String }
 })
 
 const Workout = mongoose.model("Workout", workoutSchema);
@@ -24,7 +24,7 @@ async function createWorkout(workout) {
 
  async function updateWorkout(id, workout) {
   const user = await Workout.updateOne({"_id": id}, {$set: { workout: workout}});
-  return workout;
+  return user;
 }
 
   module.exports = { 

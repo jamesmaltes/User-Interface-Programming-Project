@@ -24,7 +24,7 @@ const Register = () => {
     .then((data) => {
       if(!data.message) {
         updateUser("authenticated", true)
-        navigate("/profile")
+        navigate("/books")
       }
     })  
     .catch((error) => {

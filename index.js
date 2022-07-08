@@ -1,19 +1,12 @@
-//requiring files
 require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const path = require('path');
 
-//users
 const userRoutes = require('./server/routes/user');
-//const athleteRoutes = require('./server/routes/athlete');
-
-//posts
 const workoutRoutes = require('./server/routes/workout');
-//const reviewRoutes = require('./server/routes/review');
 
-//enabling use of mongoose DB
 mongoose.connect(process.env.dbURL)
   .then(console.log("DB Connected!!"))
   .catch(error => console.log(error));
@@ -30,12 +23,8 @@ app.use(function(req, res, next) {
   next();
 });
 
-//using routes
 app.use('/user', userRoutes);
-//app.use('/athlete', athleteRoutes);
-app.use('/workout', workoutRoutes);
-//app.use('/review', reviewRoutes);
-
+app.use('./workout', workoutRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}!`));

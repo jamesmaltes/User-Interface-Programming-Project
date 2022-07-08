@@ -15,4 +15,3 @@ export async function fetchData(route='', data={}, methodType) {
       throw await response.json();
     }
   }
-
