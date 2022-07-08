@@ -23,7 +23,7 @@ async function createWorkout(workout) {
 }
 
  async function updateWorkout(id, workout) {
-  const trainer = await Workout.updateOne({"_id": id}, {$set: { workout: workout}});
+  const user = await Workout.updateOne({"_id": id}, {$set: { workout: workout}});
   return workout;
 }
 

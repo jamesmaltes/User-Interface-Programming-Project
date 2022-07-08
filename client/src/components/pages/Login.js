@@ -18,7 +18,7 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    fetchData("/trainer/login", 
+    fetchData("/user/login", 
       {
        username,
        password

@@ -15,7 +15,7 @@ const Register = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    fetchData("/trainer/register", 
+    fetchData("/user/register", 
       {
        username,
        password
