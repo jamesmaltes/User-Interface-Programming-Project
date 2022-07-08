@@ -9,7 +9,7 @@ const Workouts = (props) => {
     const [workouts, setWorkouts] = useState([]);
 
     useEffect(() => {
-        fetch("/workout/getWorkout")
+        fetch("/workout/show")
         .then(res => res.json())
         .then(data => setWorkouts(data))
     }, [workouts]
