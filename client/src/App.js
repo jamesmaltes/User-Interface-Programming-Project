@@ -1,5 +1,3 @@
-// import your own logo instead
-
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserProvider } from './context/userContext';
@@ -10,23 +8,6 @@ import Register from './components/pages/Register.js';
 import Login from './components/pages/Login.js';
 import Profile from './components/pages/Profile.js';
 
-const workouts = [
-  {
-    id: 12334,
-    title: "Workout week 1"
-  },
-  {
-    id: 34553,
-    title: "Workout week 2"
-  },
-  {
-    id: 55555,
-    title: "workout week 3"
-  },
-]
-
-
-
 function App() {
   return (
     <div className="App">
@@ -36,10 +17,10 @@ function App() {
       <Routes>
           <Route path="/" element={<Navbar />}>
           <Route index element={<About />}/>
-          <Route path="workouts" element={<Workouts workout={workouts}/>}/>
-          <Route path="register" element={<Register />}/>
           <Route path="login" element={<Login />}/>
+          <Route path="register" element={<Register />}/>
           <Route path="profile" element={<Profile />}/>
+          <Route path="workouts" element={<Workouts />}/>
 
         </Route>
       </Routes>

@@ -9,8 +9,8 @@ const Workouts = (props) => {
     const [workouts, setWorkouts] = useState([]);
 
     useEffect(() => {
-        fetch("/workout/getWorkouts")
-        .then(response => response.json())
+        fetch("/workout/getWorkout")
+        .then(res => res.json())
         .then(data => setWorkouts(data))
     }, [workouts]
     )
@@ -32,10 +32,10 @@ const Workouts = (props) => {
                   console.log(`${error.message}`);
               })
             }
-            
+
                   <div key={workout._id} id={`workouts-container`} className='workouts-container'>
                     <form className="workout-form" onSubmit={deleteWorkout}>
-                      <h2 className="workout">{workout.content}`</h2>
+                      <h2 className="workout"> {user.username}'s Workout: {workout.content}`</h2>
                       
                       <button type="submit" className="btn" id='del-btn'>Delete</button>
                     </form>

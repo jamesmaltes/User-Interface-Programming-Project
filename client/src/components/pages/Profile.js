@@ -24,7 +24,7 @@ const Profile = () => {
 
   //creating new workout
   const CreateNewWorkout = () => {
-    const newWorkout = document.getElementById('postedWorkouts');
+    const newWorkout = document.getElementById('posted-workouts');
         let workoutContent = document.createElement('h3');
         workoutContent.innerHTML = (`${content}`)
         newWorkout.appendChild(workoutContent);
@@ -36,7 +36,7 @@ const Profile = () => {
 
     fetchData("/workout/create", 
       {
-       workout
+       content: content
       }, 
       "POST")
     .then((data) => {
@@ -59,7 +59,7 @@ const Profile = () => {
           <h2>
             Welcome to your profile, { user.username }.
           </h2>
-          <label htmlFor="workouttext" className="form-label">Write a workout:</label>
+          <label htmlFor="workout-text" className="form-label">Write a workout:</label>
           <input 
             type="text" 
             className="form-control" 
@@ -71,7 +71,7 @@ const Profile = () => {
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Post a new workout"/>
-        <div className="postedWorkouts">
+        <div className="posted-workouts">
 
         </div>
       </form>
