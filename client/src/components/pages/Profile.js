@@ -16,6 +16,8 @@ const Profile = () => {
 
   const { username, content } = workout;
 
+  const [workouts, setWorkouts] = useState([]);
+
   //functions
 
   // to display posts
@@ -31,6 +33,17 @@ const Profile = () => {
     newWorkout.appendChild(workoutText);
   }
 
+  const deleteWorkout = () => {
+    fetchData('/workout/delete', { id: workout._id }, "DELETE")
+              .then((data) => {
+                  if(!data.message) {
+                      setWorkouts(workouts);
+                  }
+              })
+              .catch((error) => {
+                  console.log(`${error.message}`);
+              })
+  }
 
   const onChange = (e) => setWorkout({...workout, [e.target.name]: e.target.value})
 
@@ -80,6 +93,11 @@ const Profile = () => {
 
         </div>
       </form>
+
+      <form onSubmit={deleteWorkout}>
+        <input type ="submit" className="btn btn-primary" value="Delete a workout"/>
+      </form>
+
       <div>
         <Workouts>
         </Workouts>
