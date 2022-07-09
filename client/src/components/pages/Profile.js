@@ -47,6 +47,7 @@ const Profile = () => {
       if(!data.message) {
         console.log(data)
         console.log(content)
+        createNewWorkout();
       }
     })  
     .catch((error) => {
