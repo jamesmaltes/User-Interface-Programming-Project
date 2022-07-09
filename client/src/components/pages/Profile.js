@@ -1,17 +1,20 @@
 import { fetchData} from "../../main.js";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../context/userContext.js";
 import Workouts from "./Workouts";
 
 const Profile = () => {
   
   const { user } = useContext(UserContext);
+  const currentUser = user.username;
 
   const [workout, setWorkout] = useState({
+    username: currentUser,
     content: ''
   });
 
-  const { content } = workout;
+
+  const { username, content } = workout;
 
   //functions
 
@@ -20,29 +23,30 @@ const Profile = () => {
   
   }, []);
 
-  const onChange = (e) => setWorkout({...workout, [e.target.name]: e.target.value})
 
-  //creating new workout
-  const CreateNewWorkout = () => {
-    const newWorkout = document.getElementById('posted-workouts');
-        let workoutContent = document.createElement('h3');
-        workoutContent.innerHTML = (`${content}`)
-        newWorkout.appendChild(workoutContent);
+  const createNewWorkout = () => {
+    const newWorkout = document.getElementById('posted-workouts')
+    let workoutText = document.createElement('h3');
+    workoutText.innerHTML = (`${content}`);
+    newWorkout.appendChild(workoutText);
   }
 
+
+  const onChange = (e) => setWorkout({...workout, [e.target.name]: e.target.value})
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     fetchData("/workout/create", 
       {
+        username: currentUser,
        content: content
       }, 
       "POST")
     .then((data) => {
       if(!data.message) {
         console.log(data)
-        CreateNewWorkout();
+        console.log(content)
       }
     })  
     .catch((error) => {
@@ -64,13 +68,13 @@ const Profile = () => {
             type="text" 
             className="form-control" 
             id="workout-text"
-            name='workout-text'
+            name='content'
             onChange={onChange}
             value={content}
             required
           />
         </div>
-        <input type="submit" className="btn btn-primary" value="Post a new workout"/>
+        <input type="submit" className="btn btn-primary" value="Post your workout"/>
         <div className="posted-workouts">
 
         </div>

@@ -1,13 +1,15 @@
 const mongoose = require("mongoose");
 
 const workoutSchema = new mongoose.Schema({
+  username: { type: String },
   workout:  { type:String }
 })
 
 const Workout = mongoose.model("Workout", workoutSchema);
 
-async function createWorkout(workout) {
+async function createWorkout(username, workout) {
     const newWorkout = await Workout.create({
+      username: username,
      workout: workout
     });
     return newWorkout;

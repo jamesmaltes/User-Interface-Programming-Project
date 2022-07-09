@@ -4,9 +4,9 @@ const router = express.Router();
 
 router
 
-.get('/show', async (req, res) => {
+.get('/get', async (req, res) => {
     try {
-      const workout = await Workout.getWorkouts(req.body.workout);
+      const workout = await Workout.getWorkouts(req.body.workout, req.body.username);
       res.send(workout);
     } catch(err) {
       res.status(401).send({message: err.message});

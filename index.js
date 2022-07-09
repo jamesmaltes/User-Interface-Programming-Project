@@ -24,7 +24,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/user', userRoutes);
-app.use('./workout', workoutRoutes);
+app.use('/workout', workoutRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}!`));
